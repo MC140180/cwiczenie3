@@ -17,17 +17,15 @@ public class Main {
         client.addProductToBasket(new Product("Wiertarka", 1));
         client.addProductToBasket(new Product("Wiertarka3", 11));
 
-        IGiftAssigner order =  client.placeOrder();
+        Order order =  client.placeOrder();
 
         ArrayList<Order> orders = shop.getSubmittedOrders();
         System.out.println(!orders.isEmpty() ? orders.getFirst().getTotalInfo() : "[]");
         IOrderSubmiter shopAdmin = new ShopAdmin(shop);
-        order = new AssignDiscount10(order);
-        new AssignLeash(order);
+        new AssignLeash(new AssignDiscount10(order));
 
         shopAdmin.submitOrder(order.getOrder());
 
         System.out.println((!orders.isEmpty() ? orders.getFirst().getTotalInfo() : "[]"));
-
     }
 }

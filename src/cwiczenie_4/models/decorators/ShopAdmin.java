@@ -6,17 +6,17 @@ import cwiczenie_4.models.Shop;
 
 import java.util.ArrayList;
 
-public class ShopAdmin implements IOrderSubmiter {
+public class ShopAdmin extends Shop implements IOrderSubmiter {
    private Shop shop;
 
-    public Shop getShop() {
-        return shop;
-    }
+
 
     public ShopAdmin(Shop shop) {
         this.shop = shop;
     }
-
+    public Shop getShop() {
+        return shop;
+    }
     @Override
     public void submitOrder(Order order) {
         order.submitOrder();
@@ -26,7 +26,5 @@ public class ShopAdmin implements IOrderSubmiter {
         this.shop.addOrderToSubmitted(order);
     }
 
-    public void getSubmittedOrders(){
 
-    }
 }

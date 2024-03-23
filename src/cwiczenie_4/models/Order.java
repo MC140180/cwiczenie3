@@ -3,6 +3,9 @@ package cwiczenie_4.models;
 import cwiczenie_4.interfaces.IGiftAssigner;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 public class Order implements IGiftAssigner  {
     private final ArrayList<Product> products;
@@ -51,6 +54,14 @@ public class Order implements IGiftAssigner  {
     }
     public Double getTotalCost(){
         return cost + this.transportPrice;
+    }
+
+    public HashMap<String, Object> getTotalInfo() {
+        HashMap<String, Object> totalOrderInfo = new HashMap<>();
+        totalOrderInfo.put("Products:", this.products.stream().map(Product::getName).collect(Collectors.toList()));
+        totalOrderInfo.put("Gifts:", this.gifts.stream().map(Product::getName).collect(Collectors.toList()));
+        totalOrderInfo.put("Total price:", this.getTotalCost()); // here is double
+        return totalOrderInfo;
     }
 
     public void setCost(Double cost) {

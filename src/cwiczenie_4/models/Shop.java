@@ -32,4 +32,8 @@ public class Shop implements IOrderSubmiter {
     public void addOrderToSubmitted(Order order){
         this.submittedOrders.add(order);
     }
+
+    public Shop getShop(){
+        return this;
+    }
 }

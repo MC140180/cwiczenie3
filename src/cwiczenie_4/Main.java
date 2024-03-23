@@ -15,12 +15,12 @@ public class Main {
         Order order = new Order(client, client.getBasket());
         shop.placeOrder(order);
 
-        ShopAdmin shopAdmin = new ShopAdmin(shop);
+        Shop shopAdmin = new ShopAdmin(shop);
 
         new AssignLeash(order);
         shopAdmin.submitOrder(order);
 
         ArrayList<Order> orders = shopAdmin.getShop().getSubmittedOrders();
-        System.out.println(orders.getFirst().getTotalCost());
+        System.out.println(orders.getFirst().getTotalInfo());
     }
 }

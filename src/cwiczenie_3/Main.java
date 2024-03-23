@@ -14,9 +14,7 @@ public class Main {
     public static void main(String[] args) {
         IPizza pizza = new PlainPizza();
 
-        pizza = new AddHamDecorator(pizza);
-        pizza = new AddCheeseDecorator(pizza);
-        pizza = new AddSauceDecorator(pizza);
+        pizza = new AddSauceDecorator(new AddCheeseDecorator(new AddHamDecorator(pizza)));
         System.out.println("Pizza with all ingredients:"+ pizza.getIngredients());
         pizza = new RemoveHamDecorator(pizza);
         System.out.println("Same pizza without ham: " + pizza.getIngredients());

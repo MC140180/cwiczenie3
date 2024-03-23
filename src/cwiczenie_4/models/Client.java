@@ -4,7 +4,7 @@ import cwiczenie_4.interfaces.IOrderSubmiter;
 
 import java.util.ArrayList;
 
-public class Client implements IOrderSubmiter {
+public class Client  {
     private ArrayList<Product> basket;
     private Shop shop;
     public Client(Shop shop) {
@@ -21,12 +21,9 @@ public class Client implements IOrderSubmiter {
     public void deleteProductFromBasket(Product product) {
         this.basket.remove(product);
     }
-
-    @Override
-    public void submitOrder(Order order){
-        System.out.println("You cannot submit order");
-    }
-    public void placeOrder(Order order) {
+    public Order placeOrder() {
+        Order order = new Order(this, this.basket);
         this.shop.addPlacedOrder(order);
+        return order;
     }
 }

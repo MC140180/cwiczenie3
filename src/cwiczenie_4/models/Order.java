@@ -10,6 +10,9 @@ import java.util.stream.Collectors;
 public class Order implements IGiftAssigner  {
     private final ArrayList<Product> products;
     private Double cost;
+
+
+
     private final Client client;
     private ArrayList<Product> gifts;
     private Boolean submitted;
@@ -60,5 +63,9 @@ public class Order implements IGiftAssigner  {
             this.cost += product.getPrice();
         }
         return (this.cost > 0 ? this.cost : 0) + this.transportPrice;
+    }
+    @Override
+    public Order getOrder() {
+        return this;
     }
 }

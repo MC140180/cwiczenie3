@@ -1,5 +1,6 @@
 package cwiczenie_4;
 
+import cwiczenie_4.interfaces.IGiftAssigner;
 import cwiczenie_4.interfaces.IOrderSubmiter;
 import cwiczenie_4.models.*;
 import cwiczenie_4.models.decorators.AssignDiscount10;
@@ -15,19 +16,18 @@ public class Main {
         Client client = new Client(shop);
         client.addProductToBasket(new Product("Wiertarka", 1));
         client.addProductToBasket(new Product("Wiertarka3", 11));
-        Order order = new Order(client, client.getBasket());
 
-        client.placeOrder(order);
-
-        client.submitOrder(order);
+        IGiftAssigner order =  client.placeOrder();
 
         ArrayList<Order> orders = shop.getSubmittedOrders();
         System.out.println(!orders.isEmpty() ? orders.getFirst().getTotalInfo() : "[]");
-        ShopAdmin shopAdmin = new ShopAdmin(shop);
-        new AssignDiscount10(order);
-        shopAdmin.submitOrder(order);
+        IOrderSubmiter shopAdmin = new ShopAdmin(shop);
+        order = new AssignDiscount10(order);
+        new AssignLeash(order);
 
-        System.out.println(!orders.isEmpty() ? orders.getFirst().getTotalInfo() : "[]");
+        shopAdmin.submitOrder(order.getOrder());
+
+        System.out.println((!orders.isEmpty() ? orders.getFirst().getTotalInfo() : "[]"));
 
     }
 }

@@ -4,15 +4,19 @@ import cwiczenie_4.models.Order;
 import cwiczenie_4.models.Product;
 import cwiczenie_4.interfaces.IGiftAssigner;
 
-public class AssignGift extends Order implements IGiftAssigner {
-    Order order;
-    public AssignGift(Order order){
-        super(order.getClient(), order.getProducts());
+public class AssignGift  implements IGiftAssigner {
+    IGiftAssigner order;
+    public AssignGift(IGiftAssigner order){
         this.order = order;
     }
     @Override
     public void assignGift(Product gift) {
         this.order.assignGift(gift);
+    }
+
+    @Override
+    public Order getOrder(){
+        return this.order.getOrder();
     }
 
 }

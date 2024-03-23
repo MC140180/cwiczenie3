@@ -4,7 +4,7 @@ import cwiczenie_4.interfaces.IOrderSubmiter;
 
 import java.util.ArrayList;
 
-public class Shop implements IOrderSubmiter {
+public class Shop {
     private ArrayList<Order> placedOrders;
     private ArrayList<Order> submittedOrders;
 
@@ -16,10 +16,7 @@ public class Shop implements IOrderSubmiter {
         this.placedOrders = new ArrayList<>();
         this.submittedOrders = new ArrayList<>();
     }
-    @Override
-    public void submitOrder(Order order){
-        System.out.println("You cannot submit order");
-    }
+
     public ArrayList<Order> getPlacedOrders() {
         return placedOrders;
     }
@@ -27,8 +24,9 @@ public class Shop implements IOrderSubmiter {
     public void setPlacedOrders(ArrayList<Order> orders) {
         this.placedOrders = orders;
     }
-    public void placeOrder(Order order) {
-        this.placedOrders.add(order) ;
+
+    public void addPlacedOrder(Order order){
+        this.placedOrders.add(order);
     }
 
     public ArrayList<Order>  getSubmittedOrders() {

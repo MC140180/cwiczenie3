@@ -1,11 +1,15 @@
 package cwiczenie_4.models;
 
+import cwiczenie_4.interfaces.IOrderSubmiter;
+
 import java.util.ArrayList;
 
-public class Client {
+public class Client implements IOrderSubmiter {
     private ArrayList<Product> basket;
-    public Client() {
+    private Shop shop;
+    public Client(Shop shop) {
         this.basket = new ArrayList<Product>();
+        this.shop = shop;
     }
     public ArrayList<Product> getBasket() {
         return basket;
@@ -18,4 +22,11 @@ public class Client {
         this.basket.remove(product);
     }
 
+    @Override
+    public void submitOrder(Order order){
+        System.out.println("You cannot submit order");
+    }
+    public void placeOrder(Order order) {
+        this.shop.addPlacedOrder(order);
+    }
 }

@@ -31,17 +31,9 @@ public class Order implements IGiftAssigner  {
         return client;
     }
 
-    public ArrayList<Product> getGifts() {
-        return gifts;
-    }
-
     @Override
     public void assignGift(Product gift) {
         this.gifts.add(gift);
-    }
-
-    public Boolean getSubmitted() {
-        return submitted;
     }
 
     public void submitOrder() {

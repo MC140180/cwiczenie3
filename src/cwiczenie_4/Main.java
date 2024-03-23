@@ -11,19 +11,21 @@ import java.util.ArrayList;
 public class Main {
     public static void main(String[] args) {
         Shop shop = new Shop();
-        Client client = new Client();
+
+        Client client = new Client(shop);
         client.addProductToBasket(new Product("Wiertarka", 1));
         client.addProductToBasket(new Product("Wiertarka3", 11));
         Order order = new Order(client, client.getBasket());
-        shop.placeOrder(order);
 
-        shop.submitOrder(order);
+        client.placeOrder(order);
+
+        client.submitOrder(order);
 
         ArrayList<Order> orders = shop.getSubmittedOrders();
         System.out.println(!orders.isEmpty() ? orders.getFirst().getTotalInfo() : "[]");
-        shop = new ShopAdmin(shop);
+        ShopAdmin shopAdmin = new ShopAdmin(shop);
         new AssignDiscount10(order);
-        shop.submitOrder(order);
+        shopAdmin.submitOrder(order);
 
         System.out.println(!orders.isEmpty() ? orders.getFirst().getTotalInfo() : "[]");
 

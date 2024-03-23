@@ -16,7 +16,7 @@ public class ShopAdmin {
     public void submitOrder(IGiftAssigner order) {
         order.getOrder().submitOrder();
         ArrayList<Order> placedOrders = this.shop.getPlacedOrders();
-        placedOrders.remove(order);
+        placedOrders.remove(order.getOrder());
         this.shop.setPlacedOrders(placedOrders);
         this.shop.addOrderToSubmitted(order.getOrder());
     }

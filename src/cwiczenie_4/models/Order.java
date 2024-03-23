@@ -4,19 +4,15 @@ import cwiczenie_4.interfaces.IGiftAssigner;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
-public class Order implements IGiftAssigner  {
+public class Order implements IGiftAssigner {
     private final ArrayList<Product> products;
     private Double cost;
-
-
-
     private final Client client;
-    private ArrayList<Product> gifts;
+    private final ArrayList<Product> gifts;
     private Boolean submitted;
-    private double transportPrice;
+    private final double transportPrice;
 
     public Order(Client client, ArrayList<Product> products) {
         this.client = client;
@@ -24,6 +20,16 @@ public class Order implements IGiftAssigner  {
         this.gifts = new ArrayList<>();
         this.cost = 0.0;
         this.transportPrice = 13.0;
+    }
+
+    @Override
+    public void assignGift(Product gift) {
+        this.gifts.add(gift);
+    }
+
+    @Override
+    public Order getOrder() {
+        return this;
     }
 
     public ArrayList<Product> getProducts() {
@@ -34,16 +40,12 @@ public class Order implements IGiftAssigner  {
         return client;
     }
 
-    @Override
-    public void assignGift(Product gift) {
-        this.gifts.add(gift);
-    }
-
     public void submitOrder() {
         this.submitted = true;
     }
-    public Double getTotalCost(){
-       return this.calculateOrder();
+
+    public Double getTotalCost() {
+        return this.calculateOrder();
     }
 
     public HashMap<String, Object> getTotalInfo() {
@@ -54,18 +56,15 @@ public class Order implements IGiftAssigner  {
         return totalOrderInfo;
     }
 
-    private double calculateOrder(){
+    private double calculateOrder() {
         this.cost = 0.0;
-        for(Product product: this.products) {
+        for (Product product : this.products) {
             this.cost += product.getPrice();
         }
-        for(Product product: this.gifts) {
+        for (Product product : this.gifts) {
             this.cost += product.getPrice();
         }
         return (this.cost > 0 ? this.cost : 0) + this.transportPrice;
     }
-    @Override
-    public Order getOrder() {
-        return this;
-    }
+
 }

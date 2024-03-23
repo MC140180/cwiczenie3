@@ -1,1 +1,2 @@
-Wzorzec projektowy dekorator służy do opakowywania istniejących obiektów w obiekty o zgodnym interfejsie w celu rozszerzenia ich funkcjonalności. 
+Wzorzec projektowy dekorator służy do opakowywania istniejących obiektów w obiekty o zgodnym interfejsie w celu
+rozszerzenia ich funkcjonalności. 

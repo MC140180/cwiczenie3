@@ -5,5 +5,6 @@ import cwiczenie_4.models.Shop;
 
 public interface IOrderSubmiter {
     void submitOrder(Order order);
+
     Shop getShop();
 }

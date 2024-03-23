@@ -8,7 +8,8 @@ import java.util.HashMap;
 
 public abstract class ModifyPizzaDecorator implements IPizza {
     IPizza pizza;
-    public ModifyPizzaDecorator(IPizza pizza){
+
+    public ModifyPizzaDecorator(IPizza pizza) {
         this.pizza = pizza;
     }
 

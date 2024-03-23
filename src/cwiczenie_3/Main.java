@@ -15,7 +15,7 @@ public class Main {
         IPizza pizza = new PlainPizza();
 
         pizza = new AddSauceDecorator(new AddCheeseDecorator(new AddHamDecorator(pizza)));
-        System.out.println("Pizza with all ingredients:"+ pizza.getIngredients());
+        System.out.println("Pizza with all ingredients:" + pizza.getIngredients());
         pizza = new RemoveHamDecorator(pizza);
         System.out.println("Same pizza without ham: " + pizza.getIngredients());
         pizza = new RemoveCheeseDecorator(pizza);
@@ -28,6 +28,6 @@ public class Main {
         System.out.println("basic ham pizza: " + hamPizza.getIngredients());
         new AddHamDecorator(hamPizza);
         System.out.println("basic ham pizza with extra ham: " + hamPizza.getIngredients());
-        System.out.println("no sauce ham pizza: "+ new RemoveSauceDecorator(hamPizza).getIngredients());
+        System.out.println("no sauce ham pizza: " + new RemoveSauceDecorator(hamPizza).getIngredients());
     }
 }

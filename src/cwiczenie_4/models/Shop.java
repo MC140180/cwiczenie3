@@ -1,7 +1,5 @@
 package cwiczenie_4.models;
 
-import cwiczenie_4.interfaces.IOrderSubmiter;
-
 import java.util.ArrayList;
 
 public class Shop {
@@ -12,7 +10,7 @@ public class Shop {
         this.submittedOrders = submittedOrders;
     }
 
-    public Shop(){
+    public Shop() {
         this.placedOrders = new ArrayList<>();
         this.submittedOrders = new ArrayList<>();
     }
@@ -25,14 +23,15 @@ public class Shop {
         this.placedOrders = orders;
     }
 
-    public void addPlacedOrder(Order order){
+    public void addPlacedOrder(Order order) {
         this.placedOrders.add(order);
     }
 
-    public ArrayList<Order>  getSubmittedOrders() {
+    public ArrayList<Order> getSubmittedOrders() {
         return submittedOrders;
     }
-    public void addOrderToSubmitted(Order order){
+
+    public void addOrderToSubmitted(Order order) {
         this.submittedOrders.add(order);
     }
 }

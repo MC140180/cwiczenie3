@@ -5,6 +5,6 @@ import cwiczenie_4.models.Product;
 
 public interface IGiftAssigner {
     void assignGift(Product gift);
-    Order getOrder();
 
+    Order getOrder();
 }

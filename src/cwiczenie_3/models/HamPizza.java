@@ -4,8 +4,8 @@ import cwiczenie_3.enums.IngredientsEnum;
 
 import java.util.ArrayList;
 
-public class HamPizza extends Pizza{
-    public HamPizza(){
+public class HamPizza extends Pizza {
+    public HamPizza() {
         super();
         ArrayList<IngredientsEnum> ingredients = new ArrayList<IngredientsEnum>();
         ingredients.add(IngredientsEnum.TOMATO_SAUCE);

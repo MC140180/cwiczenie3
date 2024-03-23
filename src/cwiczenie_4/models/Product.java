@@ -1,8 +1,8 @@
 package cwiczenie_4.models;
 
 public class Product {
-    private double price;
-    private String name;
+    private final double price;
+    private final String name;
 
     public double getPrice() {
         return price;
@@ -12,7 +12,7 @@ public class Product {
         return name;
     }
 
-    public Product(String name, double price){
+    public Product(String name, double price) {
         this.price = price;
         this.name = name;
     }

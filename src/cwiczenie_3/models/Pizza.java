@@ -9,11 +9,11 @@ import java.util.HashMap;
 
 public abstract class Pizza implements IPizza {
     private ArrayList<IngredientsEnum> ingredients;
-    private ArrayList<IngredientsEnum> extraIngredients;
+    private final ArrayList<IngredientsEnum> extraIngredients;
 
-    public Pizza(){
-        this.ingredients  = new ArrayList<IngredientsEnum>();
-        this.extraIngredients  = new ArrayList<IngredientsEnum>();
+    public Pizza() {
+        this.ingredients = new ArrayList<IngredientsEnum>();
+        this.extraIngredients = new ArrayList<IngredientsEnum>();
     }
 
     public HashMap<String, ArrayList<IngredientsEnum>> getIngredients() {
@@ -26,6 +26,7 @@ public abstract class Pizza implements IPizza {
     public void setIngredients(ArrayList<IngredientsEnum> ingredients) {
         this.ingredients = ingredients;
     }
+
     public void addExtraIngredient(IngredientsEnum ingredient) {
         this.extraIngredients.add(ingredient);
     }

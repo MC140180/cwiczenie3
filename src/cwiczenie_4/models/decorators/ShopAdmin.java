@@ -11,6 +11,9 @@ public class ShopAdmin  implements IOrderSubmiter {
     public ShopAdmin(Shop shop) {
         this.shop = shop;
     }
+
+
+
     @Override
     public void submitOrder(Order order) {
         order.submitOrder();
@@ -20,4 +23,8 @@ public class ShopAdmin  implements IOrderSubmiter {
         this.shop.addOrderToSubmitted(order);
     }
 
+    @Override
+    public Shop getShop() {
+        return shop;
+    }
 }

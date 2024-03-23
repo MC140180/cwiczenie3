@@ -6,16 +6,13 @@ import cwiczenie_4.models.Shop;
 
 import java.util.ArrayList;
 
-public class ShopAdmin extends Shop implements IOrderSubmiter {
+public class ShopAdmin extends Shop  implements IOrderSubmiter {
    private Shop shop;
-
-
-
     public ShopAdmin(Shop shop) {
         this.shop = shop;
-    }
-    public Shop getShop() {
-        return shop;
+        this.setPlacedOrders(this.shop.getPlacedOrders());
+        this.setSubmittedOrders(this.shop.getSubmittedOrders());
+
     }
     @Override
     public void submitOrder(Order order) {
@@ -26,5 +23,14 @@ public class ShopAdmin extends Shop implements IOrderSubmiter {
         this.shop.addOrderToSubmitted(order);
     }
 
+    public Order assignMascot(Order order){
+        return new AssignMascot(order);
+    }
+    public Order assignLeash(Order order){
+        return new AssignLeash(order);
+    }
+    public Order assignDiscount10(Order order){
+        return new AssignDiscount10(order);
+    }
 
 }

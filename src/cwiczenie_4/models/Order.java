@@ -21,7 +21,6 @@ public class Order implements IGiftAssigner  {
         this.gifts = new ArrayList<>();
         this.cost = 0.0;
         this.transportPrice = 13.0;
-        this.calculateOrder();
     }
 
     public ArrayList<Product> getProducts() {
@@ -39,7 +38,6 @@ public class Order implements IGiftAssigner  {
     @Override
     public void assignGift(Product gift) {
         this.gifts.add(gift);
-        this.calculateOrder();
     }
 
     public Boolean getSubmitted() {
@@ -49,11 +47,8 @@ public class Order implements IGiftAssigner  {
     public void submitOrder() {
         this.submitted = true;
     }
-    public Double getCost() {
-        return cost ;
-    }
     public Double getTotalCost(){
-        return cost + this.transportPrice;
+       return this.calculateOrder();
     }
 
     public HashMap<String, Object> getTotalInfo() {
@@ -64,17 +59,14 @@ public class Order implements IGiftAssigner  {
         return totalOrderInfo;
     }
 
-    public void setCost(Double cost) {
-        this.cost = cost;
-    }
-
     private double calculateOrder(){
+        this.cost = 0.0;
         for(Product product: this.products) {
             this.cost += product.getPrice();
         }
         for(Product product: this.gifts) {
-            this.cost -= product.getPrice();
+            this.cost += product.getPrice();
         }
-        return this.cost > 0 ? this.cost : 0;
+        return (this.cost > 0 ? this.cost : 0) + this.transportPrice;
     }
 }

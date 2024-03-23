@@ -15,15 +15,15 @@ public class Main {
     public static void main(String[] args) {
         Shop shop = new Shop();
 
-        Client client = new Client(shop);
+        Client client = new Client("andrzej", shop);
         client.addProductToBasket(new Product("Wiertarka", 1));
         client.addProductToBasket(new Product("Wiertarka3", 11));
 
         Order order = client.placeOrder();
 
-        ArrayList<Order> orders = shop.getSubmittedOrders();
-        System.out.println(!orders.isEmpty() ? orders.getFirst().getTotalInfo() : "[]");
         ShopAdmin shopAdmin = new ShopAdmin(shop);
+        ArrayList<Order> orders = shopAdmin.getShop().getSubmittedOrders();
+        System.out.println(!orders.isEmpty() ? orders.getFirst().getTotalInfo() : "[]");
 
         shopAdmin.submitOrder(new AssignDiscount10(new AssignMascot(new AssignLeash(order))));
 

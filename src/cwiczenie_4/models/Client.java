@@ -4,10 +4,24 @@ import java.util.ArrayList;
 
 public class Client {
     private final ArrayList<Product> basket;
-    private final Shop shop;
+    private final String clientName;
+    private Shop shop;
 
-    public Client(Shop shop) {
+    public Client(String clientName, Shop shop) {
         this.basket = new ArrayList<Product>();
+        this.shop = shop;
+        this.clientName = clientName;
+    }
+
+    public String getClientName() {
+        return clientName;
+    }
+
+    public Shop getShop() {
+        return shop;
+    }
+
+    public void setShop(Shop shop) {
         this.shop = shop;
     }
 
@@ -26,6 +40,7 @@ public class Client {
     public Order placeOrder() {
         Order order = new Order(this, this.basket);
         this.shop.addPlacedOrder(order);
+        this.shop.addClient(this);
         return order;
     }
 }

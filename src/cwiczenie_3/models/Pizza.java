@@ -8,8 +8,8 @@ import java.util.Collections;
 import java.util.HashMap;
 
 public abstract class Pizza implements IPizza {
-    private ArrayList<IngredientsEnum> ingredients;
     private final ArrayList<IngredientsEnum> extraIngredients;
+    private ArrayList<IngredientsEnum> ingredients;
 
     public Pizza() {
         this.ingredients = new ArrayList<IngredientsEnum>();

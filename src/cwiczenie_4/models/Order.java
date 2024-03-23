@@ -8,11 +8,11 @@ import java.util.stream.Collectors;
 
 public class Order implements IGiftAssigner {
     private final ArrayList<Product> products;
-    private Double cost;
     private final Client client;
     private final ArrayList<Product> gifts;
-    private Boolean submitted;
     private final double transportPrice;
+    private Double cost;
+    private Boolean submitted;
 
     public Order(Client client, ArrayList<Product> products) {
         this.client = client;

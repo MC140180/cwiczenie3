@@ -1,6 +1,5 @@
 package cwiczenie_4;
 
-import cwiczenie_4.interfaces.IOrderSubmiter;
 import cwiczenie_4.models.Client;
 import cwiczenie_4.models.Order;
 import cwiczenie_4.models.Product;
@@ -25,9 +24,8 @@ public class Main {
         ArrayList<Order> orders = shop.getSubmittedOrders();
         System.out.println(!orders.isEmpty() ? orders.getFirst().getTotalInfo() : "[]");
         ShopAdmin shopAdmin = new ShopAdmin(shop);
-        new AssignDiscount10(new AssignMascot(new AssignLeash(order)));
 
-        shopAdmin.submitOrder(order);
+        shopAdmin.submitOrder(new AssignDiscount10(new AssignMascot(new AssignLeash(order))));
 
         System.out.println((!orders.isEmpty() ? orders.getFirst().getTotalInfo() : "[]"));
     }

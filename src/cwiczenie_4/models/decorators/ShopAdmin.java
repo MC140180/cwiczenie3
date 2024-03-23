@@ -1,5 +1,6 @@
 package cwiczenie_4.models.decorators;
 
+import cwiczenie_4.interfaces.IGiftAssigner;
 import cwiczenie_4.interfaces.IOrderSubmiter;
 import cwiczenie_4.models.Order;
 import cwiczenie_4.models.Shop;
@@ -14,12 +15,12 @@ public class ShopAdmin implements IOrderSubmiter {
     }
 
     @Override
-    public void submitOrder(Order order) {
-        order.submitOrder();
+    public void submitOrder(IGiftAssigner order) {
+        order.getOrder().submitOrder();
         ArrayList<Order> placedOrders = this.shop.getPlacedOrders();
         placedOrders.remove(order);
         this.shop.setPlacedOrders(placedOrders);
-        this.shop.addOrderToSubmitted(order);
+        this.shop.addOrderToSubmitted(order.getOrder());
     }
 
     @Override

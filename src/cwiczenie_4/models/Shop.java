@@ -6,10 +6,6 @@ public class Shop {
     private ArrayList<Order> placedOrders;
     private ArrayList<Order> submittedOrders;
 
-    public void setSubmittedOrders(ArrayList<Order> submittedOrders) {
-        this.submittedOrders = submittedOrders;
-    }
-
     public Shop() {
         this.placedOrders = new ArrayList<>();
         this.submittedOrders = new ArrayList<>();
@@ -29,6 +25,10 @@ public class Shop {
 
     public ArrayList<Order> getSubmittedOrders() {
         return submittedOrders;
+    }
+
+    public void setSubmittedOrders(ArrayList<Order> submittedOrders) {
+        this.submittedOrders = submittedOrders;
     }
 
     public void addOrderToSubmitted(Order order) {

@@ -1,5 +1,7 @@
 package cwiczenie_4.models;
 
+import cwiczenie_4.interfaces.IOrder;
+
 import java.util.ArrayList;
 
 public class Client {
@@ -37,7 +39,7 @@ public class Client {
         this.basket.remove(product);
     }
 
-    public Order placeOrder() {
+    public IOrder placeOrder() {
         Order order = new Order(this, this.basket);
         this.shop.addPlacedOrder(order);
         this.shop.addClient(this);

@@ -1,11 +1,13 @@
 package cwiczenie_4.models;
 
+import cwiczenie_4.interfaces.IOrder;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class Shop {
     private ArrayList<Order> placedOrders;
-    private ArrayList<Order> submittedOrders;
+    private ArrayList<IOrder> submittedOrders;
 
     private final HashMap<String, Client> clients;
 
@@ -39,15 +41,15 @@ public class Shop {
         this.placedOrders.add(order);
     }
 
-    public ArrayList<Order> getSubmittedOrders() {
+    public ArrayList<IOrder> getSubmittedOrders() {
         return submittedOrders;
     }
 
-    public void setSubmittedOrders(ArrayList<Order> submittedOrders) {
+    public void setSubmittedOrders(ArrayList<IOrder> submittedOrders) {
         this.submittedOrders = submittedOrders;
     }
 
-    public void addOrderToSubmitted(Order order) {
+    public void addOrderToSubmitted(IOrder order) {
         this.submittedOrders.add(order);
     }
 }

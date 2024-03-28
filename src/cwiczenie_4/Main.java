@@ -1,11 +1,10 @@
 package cwiczenie_4;
 
+import cwiczenie_4.interfaces.IOrder;
 import cwiczenie_4.models.Client;
-import cwiczenie_4.models.Order;
 import cwiczenie_4.models.Product;
 import cwiczenie_4.models.Shop;
 import cwiczenie_4.models.decorators.AssignDiscount10;
-import cwiczenie_4.models.decorators.AssignLeash;
 import cwiczenie_4.models.decorators.AssignMascot;
 import cwiczenie_4.models.decorators.ShopAdmin;
 
@@ -18,15 +17,16 @@ public class Main {
         Client client = new Client("andrzej", shop);
         client.addProductToBasket(new Product("Wiertarka", 1));
         client.addProductToBasket(new Product("Wiertarka3", 11));
+        client.addProductToBasket(new Product("Wiertarka3", 11));
+        client.addProductToBasket(new Product("Wiertarka3", 11));
 
-        Order order = client.placeOrder();
+        IOrder order = client.placeOrder();
 
         ShopAdmin shopAdmin = new ShopAdmin(shop);
-        ArrayList<Order> orders = shopAdmin.getShop().getSubmittedOrders();
-        System.out.println(!orders.isEmpty() ? orders.getFirst().getTotalInfo() : "[]");
-        new AssignDiscount10(new AssignMascot(new AssignLeash(order)));
-        shopAdmin.submitOrder(order);
+        ArrayList<IOrder> orders = shopAdmin.getShop().getSubmittedOrders();
 
-        System.out.println((!orders.isEmpty() ? orders.getFirst().getTotalInfo() : "[]"));
+        IOrder order2 = new AssignDiscount10(new AssignDiscount10(new AssignDiscount10(new AssignDiscount10(new AssignMascot(new AssignDiscount10(order))))));
+        shopAdmin.submitOrder(order2);
+        System.out.println((!orders.isEmpty() ? orders.getFirst().getOrderInformation() : "[]"));
     }
 }

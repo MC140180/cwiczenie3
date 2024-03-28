@@ -1,6 +1,6 @@
 package cwiczenie_4.models.decorators;
 
-import cwiczenie_4.interfaces.IGiftAssigner;
+import cwiczenie_4.interfaces.IOrder;
 import cwiczenie_4.models.Order;
 import cwiczenie_4.models.Shop;
 
@@ -13,12 +13,11 @@ public class ShopAdmin {
         this.shop = shop;
     }
 
-    public void submitOrder(IGiftAssigner order) {
-        order.getOrder().submitOrder();
+    public void submitOrder(IOrder order) {
         ArrayList<Order> placedOrders = this.shop.getPlacedOrders();
         placedOrders.remove(order.getOrder());
         this.shop.setPlacedOrders(placedOrders);
-        this.shop.addOrderToSubmitted(order.getOrder());
+        this.shop.addOrderToSubmitted(order);
     }
 
     public Shop getShop() {

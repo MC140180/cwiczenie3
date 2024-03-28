@@ -1,18 +1,20 @@
 package cwiczenie_4.models;
 
-import cwiczenie_4.interfaces.IGiftAssigner;
+import cwiczenie_4.interfaces.IOrder;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.stream.Collectors;
 
-public class Order implements IGiftAssigner {
+public class Order implements IOrder {
     private final ArrayList<Product> products;
     private final Client client;
-    private final ArrayList<Product> gifts;
+    private  ArrayList<Product> gifts;
     private final double transportPrice;
-    private Double cost;
-    private Boolean submitted;
+    private double cost;
+
+    public ArrayList<Product> getProducts() {
+        return products;
+    }
 
     public Order(Client client, ArrayList<Product> products) {
         this.client = client;
@@ -21,50 +23,32 @@ public class Order implements IGiftAssigner {
         this.cost = 0.0;
         this.transportPrice = 13.0;
     }
+    @Override
+    public double getCost() {
+        this.cost = 0;
+        this.products.forEach(product -> {
+            this.cost += product.getPrice();
+        });
+
+        return this.cost + this.transportPrice;
+    }
 
     @Override
-    public void assignGift(Product gift) {
-        this.gifts.add(gift);
+    public ArrayList<Product> getGifts() {
+        return this.gifts;
+    }
+
+    @Override
+    public HashMap<String, Object> getOrderInformation() {
+        HashMap<String, Object> orderInfo = new HashMap<String, Object>();
+        orderInfo.put("Gifts: ", this.gifts);
+        orderInfo.put("Products: ", this.products);
+        orderInfo.put("Total price: ", this.getCost() );
+        return orderInfo;
     }
 
     @Override
     public Order getOrder() {
         return this;
     }
-
-    public ArrayList<Product> getProducts() {
-        return products;
-    }
-
-    public Client getClient() {
-        return client;
-    }
-
-    public void submitOrder() {
-        this.submitted = true;
-    }
-
-    public Double getTotalCost() {
-        return this.calculateOrder();
-    }
-
-    public HashMap<String, Object> getTotalInfo() {
-        HashMap<String, Object> totalOrderInfo = new HashMap<>();
-        totalOrderInfo.put("Products:", this.products.stream().map(Product::getName).collect(Collectors.toList()));
-        totalOrderInfo.put("Gifts:", this.gifts.stream().map(Product::getName).collect(Collectors.toList()));
-        totalOrderInfo.put("Total price:", this.getTotalCost()); // here is double
-        return totalOrderInfo;
-    }
-
-    private double calculateOrder() {
-        this.cost = 0.0;
-        for (Product product : this.products) {
-            this.cost += product.getPrice();
-        }
-        for (Product product : this.gifts) {
-            this.cost += product.getPrice();
-        }
-        return (this.cost > 0 ? this.cost : 0) + this.transportPrice;
-    }
-
 }

@@ -1,21 +1,23 @@
 package cwiczenie_4.models.decorators;
 
-import cwiczenie_4.interfaces.IGiftAssigner;
+import cwiczenie_4.interfaces.IOrder;
 import cwiczenie_4.models.Order;
 import cwiczenie_4.models.Product;
 
-public abstract class AssignGift implements IGiftAssigner {
-    IGiftAssigner order;
+import java.util.ArrayList;
+import java.util.HashMap;
 
-    public AssignGift(IGiftAssigner order) {
+public abstract class AssignGift implements IOrder {
+   protected IOrder order;
+
+    public AssignGift(IOrder order) {
         this.order = order;
     }
 
     @Override
-    public void assignGift(Product gift) {
-        this.order.assignGift(gift);
+    public ArrayList<Product> getGifts() {
+        return this.getOrder().getGifts();
     }
-
     @Override
     public Order getOrder() {
         return this.order.getOrder();

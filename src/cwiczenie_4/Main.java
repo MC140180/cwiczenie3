@@ -24,8 +24,8 @@ public class Main {
         ShopAdmin shopAdmin = new ShopAdmin(shop);
         ArrayList<Order> orders = shopAdmin.getShop().getSubmittedOrders();
         System.out.println(!orders.isEmpty() ? orders.getFirst().getTotalInfo() : "[]");
-
-        shopAdmin.submitOrder(new AssignDiscount10(new AssignMascot(new AssignLeash(order))));
+        new AssignDiscount10(new AssignMascot(new AssignLeash(order)));
+        shopAdmin.submitOrder(order);
 
         System.out.println((!orders.isEmpty() ? orders.getFirst().getTotalInfo() : "[]"));
     }

@@ -14,13 +14,13 @@ public class Main {
     public static void main(String[] args) {
         IPizza pizza = new PlainPizza();
 
-        pizza = new AddSauceDecorator(new AddCheeseDecorator(new AddHamDecorator(pizza)));
+        new AddSauceDecorator(new AddCheeseDecorator(new AddHamDecorator(pizza)));
         System.out.println("Pizza with all ingredients:" + pizza.getIngredients());
-        pizza = new RemoveHamDecorator(pizza);
+        new RemoveHamDecorator(pizza);
         System.out.println("Same pizza without ham: " + pizza.getIngredients());
-        pizza = new RemoveCheeseDecorator(pizza);
+        new RemoveCheeseDecorator(pizza);
         System.out.println("Same pizza no cheese and ham:" + pizza.getIngredients());
-        pizza = new RemoveSauceDecorator(pizza);
+        new RemoveSauceDecorator(pizza);
         System.out.println("Same, plain pizza:" + pizza.getIngredients());
 
 

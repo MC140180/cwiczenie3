@@ -1,7 +1,10 @@
 package cwiczenie_3.models.decorators.RemovingDecorators;
 
+import cwiczenie_3.enums.IngredientsEnum;
 import cwiczenie_3.interfaces.IPizza;
 import cwiczenie_3.models.decorators.ModifyPizzaDecorator;
+
+import java.util.ArrayList;
 
 public class RemoveHamDecorator extends ModifyPizzaDecorator {
 
@@ -10,8 +13,10 @@ public class RemoveHamDecorator extends ModifyPizzaDecorator {
     }
 
     @Override
-    public  String getIngredients() {
-        return this.pizza.getIngredients().replace(", Ham", "");
+    public ArrayList<IngredientsEnum> getIngredients() {
+        ArrayList<IngredientsEnum> ingredients = this.pizza.getIngredients();
+        ingredients.remove(IngredientsEnum.HAM);
+        return ingredients;
     }
 
 

@@ -1,6 +1,10 @@
 package cwiczenie_3.interfaces;
 
+import cwiczenie_3.enums.IngredientsEnum;
+
+import java.util.ArrayList;
+
 public interface IPizza {
 
-   String getIngredients();
+   ArrayList<IngredientsEnum> getIngredients();
 }

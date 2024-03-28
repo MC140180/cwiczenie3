@@ -32,7 +32,7 @@ public class AssignLeash extends AssignGift {
         HashMap<String, Object> orderInfo = new HashMap<String, Object>();
         orderInfo.put("Gifts: ", this.order.getGifts().stream().map(Product::getName).collect(Collectors.toList()));
         orderInfo.put("Products: ", this.order.getOrder().getProducts().stream().map(Product::getName).collect(Collectors.toList()));
-        orderInfo.put("Total price: ", this.getCost() );
+        orderInfo.put("Total price: ", this.getCost() + this.order.getOrder().getTransportPrice() );
         return orderInfo;
     }
 }

@@ -27,7 +27,7 @@ public class AssignMascot  extends AssignGift {
         HashMap<String, Object> orderInfo = new HashMap<String, Object>();
         orderInfo.put("Gifts: ", this.order.getGifts().stream().map(Product::getName).collect(Collectors.toList()));
         orderInfo.put("Products: ", this.order.getOrder().getProducts().stream().map(Product::getName).collect(Collectors.toList()));
-        orderInfo.put("Total price: ", this.order.getCost() );
+        orderInfo.put("Total price: ", this.order.getCost() + this.order.getOrder().getTransportPrice() );
         return orderInfo;
     }
 }

@@ -30,7 +30,7 @@ public class Order implements IOrder {
             this.cost += product.getPrice();
         });
 
-        return this.cost + this.transportPrice;
+        return this.cost;
     }
 
     @Override
@@ -38,12 +38,16 @@ public class Order implements IOrder {
         return this.gifts;
     }
 
+    public double getTransportPrice() {
+        return transportPrice;
+    }
+
     @Override
     public HashMap<String, Object> getOrderInformation() {
         HashMap<String, Object> orderInfo = new HashMap<String, Object>();
         orderInfo.put("Gifts: ", this.gifts);
         orderInfo.put("Products: ", this.products);
-        orderInfo.put("Total price: ", this.getCost() );
+        orderInfo.put("Total price: ", this.getCost() + this.transportPrice );
         return orderInfo;
     }
 

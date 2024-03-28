@@ -16,7 +16,7 @@ public class AssignLeash extends AssignGift {
     @Override
     public ArrayList<Product> getGifts() {
         ArrayList<Product> newOrders =  this.order.getGifts();
-        newOrders.add(new Product("Leash", 0));
+        newOrders.add(new Product("Leash", 1));
         return newOrders;
     }
 
@@ -25,7 +25,7 @@ public class AssignLeash extends AssignGift {
     @Override
     public double getCost() {
 
-        return this.order.getCost() + 0;
+        return this.order.getCost() + 1;
     }
     @Override
     public HashMap<String, Object> getOrderInformation() {

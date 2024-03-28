@@ -14,13 +14,13 @@ public class AssignMascot  extends AssignGift {
     @Override
     public ArrayList<Product> getGifts() {
         ArrayList<Product> newOrders =  this.order.getGifts();
-        newOrders.add(new Product("Mascot", 1));
+        newOrders.add(new Product("Mascot", 0));
         return newOrders;
     }
 
     @Override
     public double getCost() {
-        return this.order.getCost() + 1;
+        return this.order.getCost() + 0;
     }
     @Override
     public HashMap<String, Object> getOrderInformation() {

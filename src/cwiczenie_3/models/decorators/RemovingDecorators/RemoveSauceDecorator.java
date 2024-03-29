@@ -5,6 +5,7 @@ import cwiczenie_3.interfaces.IPizza;
 import cwiczenie_3.models.decorators.ModifyPizzaDecorator;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class RemoveSauceDecorator extends ModifyPizzaDecorator {
 
@@ -15,7 +16,7 @@ public class RemoveSauceDecorator extends ModifyPizzaDecorator {
     @Override
     public ArrayList<IngredientsEnum> getIngredients() {
         ArrayList<IngredientsEnum> ingredients = this.pizza.getIngredients();
-        ingredients.remove(IngredientsEnum.TOMATO_SAUCE);
+        ingredients.removeAll(Collections.singleton(IngredientsEnum.TOMATO_SAUCE));
         return ingredients;
     }
 }

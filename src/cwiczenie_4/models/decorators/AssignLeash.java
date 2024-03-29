@@ -20,11 +20,8 @@ public class AssignLeash extends AssignGift {
         return newOrders;
     }
 
-
-
     @Override
     public double getCost() {
-
         return this.order.getCost() + 1;
     }
     @Override

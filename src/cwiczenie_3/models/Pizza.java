@@ -10,6 +10,7 @@ public  class Pizza implements IPizza {
     public Pizza() {
     }
 
+    @Override
     public ArrayList<IngredientsEnum> getIngredients() {
         ArrayList<IngredientsEnum> ingredients = new ArrayList<IngredientsEnum>();
         ingredients.add(IngredientsEnum.DOUGH);

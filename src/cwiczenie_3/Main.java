@@ -17,6 +17,8 @@ public class Main {
         System.out.println("Pizza with all ingredients:" + allIngredient.getIngredients());
 
         IPizza pizza1 = new AddHamDecorator( new RemoveCheeseDecorator(allIngredient));
+        IPizza nowHamPizza1 = new RemoveHamDecorator(pizza1);
         System.out.println("double ham, no cheese:" + pizza1.getIngredients());
+        System.out.println("no ham, no cheese:" + nowHamPizza1.getIngredients());
     }
 }

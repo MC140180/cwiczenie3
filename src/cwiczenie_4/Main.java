@@ -15,13 +15,13 @@ public class Main {
     public static void main(String[] args) {
         Shop shop = new Shop();
 
-        Client client = new Client("andrzej", shop);
+        Client client = new Client("andrzej");
         client.addProductToBasket(new Product("Wiertarka", 1));
         client.addProductToBasket(new Product("Wiertarka3", 11));
         client.addProductToBasket(new Product("Wiertarka3", 11));
         client.addProductToBasket(new Product("Wiertarka3", 11));
 
-        IOrder order = client.placeOrder();
+        IOrder order = client.placeOrder(shop);
 
         ShopAdmin shopAdmin = new ShopAdmin(shop);
         ArrayList<IOrder> orders = shopAdmin.getShop().getSubmittedOrders();

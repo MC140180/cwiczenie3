@@ -7,24 +7,14 @@ import java.util.ArrayList;
 public class Client {
     private final ArrayList<Product> basket;
     private final String clientName;
-    private Shop shop;
 
-    public Client(String clientName, Shop shop) {
+    public Client(String clientName) {
         this.basket = new ArrayList<Product>();
-        this.shop = shop;
         this.clientName = clientName;
     }
 
     public String getClientName() {
         return clientName;
-    }
-
-    public Shop getShop() {
-        return shop;
-    }
-
-    public void setShop(Shop shop) {
-        this.shop = shop;
     }
 
     public ArrayList<Product> getBasket() {
@@ -39,10 +29,10 @@ public class Client {
         this.basket.remove(product);
     }
 
-    public IOrder placeOrder() {
+    public IOrder placeOrder(Shop shop) {
         Order order = new Order(this, this.basket);
-        this.shop.addPlacedOrder(order);
-        this.shop.addClient(this);
+        shop.addPlacedOrder(order);
+        shop.addClient(this);
         return order;
     }
 }

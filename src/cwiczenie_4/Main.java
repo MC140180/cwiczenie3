@@ -5,6 +5,7 @@ import cwiczenie_4.models.Client;
 import cwiczenie_4.models.Product;
 import cwiczenie_4.models.Shop;
 import cwiczenie_4.models.decorators.AssignDiscount10;
+import cwiczenie_4.models.decorators.AssignLeash;
 import cwiczenie_4.models.decorators.AssignMascot;
 import cwiczenie_4.models.decorators.ShopAdmin;
 
@@ -25,7 +26,7 @@ public class Main {
         ShopAdmin shopAdmin = new ShopAdmin(shop);
         ArrayList<IOrder> orders = shopAdmin.getShop().getSubmittedOrders();
 
-        IOrder order2 = new AssignDiscount10(new AssignDiscount10(new AssignDiscount10(new AssignDiscount10(new AssignMascot(new AssignDiscount10(order))))));
+        IOrder order2 = new AssignLeash(new AssignLeash(new AssignDiscount10(new AssignDiscount10(new AssignDiscount10(new AssignDiscount10(new AssignMascot(new AssignDiscount10(order))))))));
         shopAdmin.submitOrder(order2);
         System.out.println((!orders.isEmpty() ? orders.getFirst().getOrderInformation() : "[]"));
     }

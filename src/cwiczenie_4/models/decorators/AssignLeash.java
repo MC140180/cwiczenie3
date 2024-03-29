@@ -24,12 +24,4 @@ public class AssignLeash extends AssignGift {
     public double getCost() {
         return this.order.getCost() + 1;
     }
-    @Override
-    public HashMap<String, Object> getOrderInformation() {
-        HashMap<String, Object> orderInfo = new HashMap<String, Object>();
-        orderInfo.put("Gifts: ", this.getGifts().stream().map(Product::getName).collect(Collectors.toList()));
-        orderInfo.put("Products: ", this.order.getOrder().getProducts().stream().map(Product::getName).collect(Collectors.toList()));
-        orderInfo.put("Total price: ", this.getCost() + this.order.getOrder().getTransportPrice() );
-        return orderInfo;
-    }
 }

@@ -24,12 +24,4 @@ public class AssignDiscount10 extends AssignGift {
     public double getCost() {
         return Math.max(this.order.getCost() - 10, 0) <= 0 ? 0 : this.order.getCost() - 10;
     }
-    @Override
-    public HashMap<String, Object> getOrderInformation() {
-        HashMap<String, Object> orderInfo = new HashMap<String, Object>();
-        orderInfo.put("Gifts: ", this.getGifts().stream().map(Product::getName).collect(Collectors.toList()));
-        orderInfo.put("Products: ", this.order.getOrder().getProducts().stream().map(Product::getName).collect(Collectors.toList()));
-        orderInfo.put("Total price: ", this.getCost() + this.order.getOrder().getTransportPrice() );
-        return orderInfo;
-    }
 }

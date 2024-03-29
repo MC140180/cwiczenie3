@@ -6,6 +6,7 @@ import cwiczenie_4.models.Product;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.stream.Collectors;
 
 public abstract class AssignGift implements IOrder {
    protected IOrder order;
@@ -15,13 +16,16 @@ public abstract class AssignGift implements IOrder {
     }
 
     @Override
-    public ArrayList<Product> getGifts() {
-        return this.getOrder().getGifts();
-    }
-    @Override
     public Order getOrder() {
         return this.order.getOrder();
     }
-
+    @Override
+    public HashMap<String, Object> getOrderInformation() {
+        HashMap<String, Object> orderInfo = new HashMap<String, Object>();
+        orderInfo.put("Gifts: ", this.getGifts().stream().map(Product::getName).collect(Collectors.toList()));
+        orderInfo.put("Products: ", this.order.getOrder().getProducts().stream().map(Product::getName).collect(Collectors.toList()));
+        orderInfo.put("Total price: ", this.getCost() + this.order.getOrder().getTransportPrice() );
+        return orderInfo;
+    }
 }
 

@@ -1,4 +1,4 @@
-package cwiczenie_4.models.decorators;
+package cwiczenie_4.models;
 
 import cwiczenie_4.interfaces.IOrder;
 import cwiczenie_4.models.Order;

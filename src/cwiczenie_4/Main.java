@@ -7,7 +7,7 @@ import cwiczenie_4.models.Shop;
 import cwiczenie_4.models.decorators.AssignDiscount10;
 import cwiczenie_4.models.decorators.AssignLeash;
 import cwiczenie_4.models.decorators.AssignMascot;
-import cwiczenie_4.models.decorators.ShopAdmin;
+import cwiczenie_4.models.ShopAdmin;
 
 import java.util.ArrayList;
 
